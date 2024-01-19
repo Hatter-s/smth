@@ -36,6 +36,9 @@ export const AllProductName = () => {
   </>)
 }
 
+const avgPrice = (products) => {
+  return products.reduce((sum, product) => sum += product.price, 0) / products.length;
+}
 
 function App() {
   const [products, setProducts] = useState(initProducts);
@@ -44,7 +47,7 @@ function App() {
   return (
     <>
       <AllProductName />
-      <div className='flex'>
+      <div className='flex gap-4 justify-center items-center'>
         <button onClick={() => {
             setProducts([...products.sort((productA, productB) =>
             { 
@@ -57,6 +60,10 @@ function App() {
         >
           Reverse order
         </button>
+
+        <div>
+          Avg price = { avgPrice(products) }
+        </div>
       </div>
 
       <div>
