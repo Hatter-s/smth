@@ -38,7 +38,7 @@ export const AllProductName = () => {
 
 
 function App() {
-  const [products, changeProducts] = useState(initProducts);
+  const [products, setProducts] = useState(initProducts);
 
 
   return (
@@ -46,14 +46,14 @@ function App() {
       <AllProductName />
       <div className='flex'>
         <button onClick={() => {
-            changeProducts(products.sort((productA, productB) =>
+            setProducts([...products.sort((productA, productB) =>
             { 
               return productA.price > productB.price ? 1 : -1;
-            }));
+            })]);
         }}>sort by price</button>
 
         <button 
-          onClick={() => changeProducts(products.reverse())}
+          onClick={() => setProducts([...products.reverse()])}
         >
           Reverse order
         </button>
